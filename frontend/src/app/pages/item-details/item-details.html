@@ -1,0 +1,181 @@
+<!-- CLAIM REFERENCE RESULT -->
+@if (claimReference()) {
+
+  <div class="claim-reference-result">
+
+    <p class="reference-label">YOUR CLAIM REFERENCE NUMBER</p>
+
+    <strong class="reference-number">{{ claimReference() }}</strong>
+
+    <button
+      type="button"
+      (click)="copyClaimReference()"
+    >
+      Copy Reference Number
+    </button>
+
+    <h3>Claim Submitted Successfully!</h3>
+
+    <p>Your claim has been submitted and is waiting for admin review.</p>
+
+    <p>Please save your reference number so you can track your claim.</p>
+
+  </div>
+
+}
+
+
+<!-- ITEM DETAILS -->
+<div class="details-container">
+
+  @if (item()) {
+
+    <h1>{{ item().itemName }}</h1>
+
+    @if (item().imageUrl) {
+      <img
+        [src]="item().imageUrl"
+        alt="Item photo"
+        [class.blurred-image]="isSensitiveItem(item())"
+      >
+    }
+
+    <p><strong>Description:</strong> {{ item().description }}</p>
+
+    <p><strong>Category:</strong> {{ item().category }}</p>
+
+    <p><strong>Location:</strong> {{ item().location }}</p>
+
+    <p>
+      <strong>Type:</strong>
+      {{ item().reportType === 'lost' ? 'Lost Item' : 'Found Item' }}
+    </p>
+
+    <p>
+      <strong>Date:</strong>
+      {{ item().dateLostFound | date:'longDate' }}
+    </p>
+
+    <p>
+      <strong>Status:</strong>
+      {{ item().status | titlecase }}
+    </p>
+
+    @if (item().reportType === 'found' && item().status === 'open') {
+      <button type="button" (click)="openClaimModal()">Claim Item</button>
+    }
+
+    <a [routerLink]="backToCatalog()">Back to Catalog</a>
+
+  } @else {
+    <p>Loading item details...</p>
+  }
+
+</div>
+
+
+<!-- CLAIM MODAL -->
+@if (showClaimModal()) {
+
+  <div class="claim-modal-overlay">
+
+    <div class="claim-modal">
+
+      <h2>Claim This Item</h2>
+
+      <p>Please provide your information to verify ownership.</p>
+
+      <form (ngSubmit)="submitClaim()" #claimForm="ngForm">
+
+        <label for="claimantName">Full Name *</label>
+
+        <input
+          id="claimantName"
+          type="text"
+          name="claimantName"
+          [(ngModel)]="claimantName"
+          required
+          placeholder="Enter your full name"
+        >
+
+        <label for="contactNumber">Contact Number *</label>
+
+        <input
+          id="contactNumber"
+          type="tel"
+          name="contactNumber"
+          [(ngModel)]="contactNumber"
+          required
+          placeholder="Enter your contact number"
+        >
+
+        <label for="email">Email Address</label>
+
+        <input
+          id="email"
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          placeholder="Enter your email address"
+        >
+
+        <label for="claimDetails">Explain Why This Item Belongs to You *</label>
+
+        <textarea
+          id="claimDetails"
+          name="claimDetails"
+          [(ngModel)]="claimDetails"
+          rows="5"
+          required
+          placeholder="Describe identifying details or evidence of ownership..."
+        ></textarea>
+
+        <label>Digital Signature *</label>
+
+        <p>Please sign inside the box using your mouse or finger.</p>
+
+        <canvas
+          #signaturePad
+          width="500"
+          height="200"
+          class="signature-canvas"
+          (pointerdown)="startDrawing($event)"
+          (pointermove)="drawSignature($event)"
+          (pointerup)="stopDrawing()"
+          (pointerleave)="stopDrawing()"
+          (pointercancel)="stopDrawing()"
+        ></canvas>
+
+        <button
+          type="button"
+          (click)="clearSignature()"
+        >
+          Clear Signature
+        </button>
+
+        <div class="claim-modal-actions">
+
+          <button
+            type="submit"
+            [disabled]="isSubmittingClaim() || !claimForm.valid"
+          >
+            {{ isSubmittingClaim() ? 'Submitting...' : 'Submit Claim' }}
+          </button>
+
+          <button
+            type="button"
+            (click)="closeClaimModal()"
+            [disabled]="isSubmittingClaim()"
+          >
+            Cancel
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+}

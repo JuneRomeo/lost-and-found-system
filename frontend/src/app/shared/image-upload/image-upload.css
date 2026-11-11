@@ -1,0 +1,53 @@
+
+.image-upload-container {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px dashed #aaa;
+  border-radius: 10px;
+  background-color: #fafafa;
+}
+
+.image-upload-container h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.image-upload-container p {
+  color: #666;
+}
+
+.image-upload-container input {
+  display: block;
+  margin: 15px 0;
+}
+
+.image-preview {
+  margin-top: 20px;
+}
+
+.image-preview img {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  max-height: 250px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.image-preview button {
+  padding: 9px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #dc3545;
+  color: white;
+  cursor: pointer;
+}
+
+.image-preview button:hover {
+  background-color: #b02a37;
+}
+
+.upload-note {
+  font-size: 13px;
+}

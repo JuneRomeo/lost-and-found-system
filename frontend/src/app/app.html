@@ -1,0 +1,42 @@
+
+<header class="navbar">
+
+  <!-- Website Logo -->
+  <div class="logo" routerLink="/">
+    Araneta Lost & Found
+  </div>
+
+  <!-- Navigation and Login -->
+  <div class="nav-actions">
+
+    <nav>
+      <a routerLink="/"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }">
+        Home
+      </a>
+
+      <a routerLink="/found-items" routerLinkActive="active">
+        Found Items
+      </a>
+
+      <a routerLink="/about" routerLinkActive="active">
+        About
+      </a>
+    </nav>
+
+    <button class="login-btn" routerLink="/admin-login">
+      Login
+    </button>
+
+  </div>
+
+</header>
+
+<main>
+  <router-outlet />
+</main>
+
+<footer>
+  <p>© 2026 Lost and Found System. All rights reserved.</p>
+</footer>

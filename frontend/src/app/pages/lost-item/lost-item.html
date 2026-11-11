@@ -1,0 +1,140 @@
+<div class="lost-item-container">
+
+  <h2>Report a Lost Item</h2>
+  <p class="page-description">
+    Provide the details of the item you lost.
+  </p>
+
+  <!-- SUCCESS MESSAGE -->
+  @if (successMessage) {
+    <div class="turnover-code-result">
+
+      <p class="success-label">REPORT SUBMITTED SUCCESSFULLY</p>
+
+      <h2>Your Lost Item Report Has Been Submitted</h2>
+
+      <p class="success-message">
+        {{ successMessage }}
+      </p>
+
+      <div class="turnover-reminder">
+        <h3>What should you do next?</h3>
+
+        <ol>
+          <li>
+            Visit the <strong>Found Items</strong> page regularly
+            to check whether your missing belongings have been found.
+          </li>
+          <li>
+            If you see an item that belongs to you, open its details.
+          </li>
+          <li>
+            Click <strong>Claim Item</strong> and submit a claim
+            with evidence proving that you own the item.
+          </li>
+          <li>
+            Wait for the administrator to review your claim.
+            You will be informed whether it is approved or rejected.
+          </li>
+        </ol>
+
+        <p>
+          <strong>Important:</strong>
+          Keep any supporting information or evidence about your
+          missing item ready in case you need to submit a claim.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="dismiss-button"
+        (click)="dismissSuccess()"
+      >
+        Dismiss Message
+      </button>
+
+    </div>
+  }
+
+  <!-- LOST ITEM FORM -->
+  <form (ngSubmit)="onSubmit()" novalidate>
+
+    <div class="form-group">
+      <label for="itemName">Item Name</label>
+      <input
+        type="text"
+        id="itemName"
+        name="itemName"
+        [(ngModel)]="itemName"
+        placeholder="Example: Black Backpack"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        name="description"
+        [(ngModel)]="description"
+        placeholder="Describe the item..."
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Category</label>
+      <select
+        id="category"
+        name="category"
+        [(ngModel)]="category"
+        required
+      >
+        <option value="">Select a category</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Clothing">Clothing</option>
+        <option value="Bags">Bags</option>
+        <option value="Accessories">Accessories</option>
+        <option value="Documents">Documents</option>
+        <option value="Others">Others</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="location">Last Known Location</label>
+      <input
+        type="text"
+        id="location"
+        name="location"
+        [(ngModel)]="location"
+        placeholder="Where did you last see the item?"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="dateLostFound">Date Lost</label>
+      <input
+        type="date"
+        id="dateLostFound"
+        name="dateLostFound"
+        [(ngModel)]="dateLostFound"
+        min="2026-10-01"
+        max="2031-12-31"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <app-image-upload
+        (fileSelected)="onImageSelected($event)"
+      ></app-image-upload>
+    </div>
+
+    <button type="submit" class="submit-button">
+      Submit Lost Item Report
+    </button>
+
+  </form>
+
+</div>

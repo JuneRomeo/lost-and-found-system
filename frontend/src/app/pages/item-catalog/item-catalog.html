@@ -1,0 +1,74 @@
+
+<div class="catalog-container">
+
+  <h1>{{ pageTitle() }}</h1>
+
+  <!-- Search Bar -->
+  <div class="search-container">
+    <input
+      type="text"
+      placeholder="Search by item name or description..."
+      [value]="searchTerm()"
+      (input)="searchTerm.set($any($event.target).value)"
+    >
+  </div>
+
+  <!-- Item Count -->
+  <p>Items found: {{ filteredItems().length }}</p>
+
+  <!-- Empty and Search Results -->
+  @if (items().length === 0) {
+    <p>No lost or found items have been reported yet.</p>
+  }
+  @else if (filteredItems().length === 0) {
+    <p>No matching items found.</p>
+  }
+  @else {
+
+    <!-- Item Cards -->
+    <div class="items-grid">
+
+      @for (item of filteredItems(); track item._id) {
+
+        <div class="item-card">
+
+          @if (item.imageUrl) {
+            <img
+              [src]="item.imageUrl"
+              alt="Item photo"
+              [class.blurred-image]="isSensitiveItem(item)"
+            >
+          }
+
+          <h2>{{ item.itemName }}</h2>
+
+          <p>{{ item.description }}</p>
+
+          <p><strong>Category:</strong> {{ item.category }}</p>
+
+          <p><strong>Location:</strong> {{ item.location }}</p>
+
+          <p>
+            <strong>Type:</strong>
+            {{ item.reportType === 'lost' ? 'Lost Item' : 'Found Item' }}
+          </p>
+
+          <p><strong>Date:</strong> {{ item.dateLostFound | date:'MMMM d, y' }}</p>
+
+            <a
+              [routerLink]="['/item-details', item._id]"
+              [queryParams]="{ from: reportType() || 'all' }"
+            >
+              View Details
+            </a>
+
+          
+        </div>
+
+      }
+
+    </div>
+
+  }
+
+</div>

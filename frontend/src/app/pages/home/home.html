@@ -1,0 +1,129 @@
+
+<section class="hero">
+  <h1>Lost Something? Found Something?</h1>
+
+  <p>
+    Welcome to Araneta Lost and Found. Start by browsing Found Items in the top navigation, or select an option below to report an item or track an existing claim.
+  </p>
+</section>
+
+<section class="report-options">
+
+  <!-- Lost Item Card -->
+  <div class="report-card lost-card">
+
+    <div class="card-header">
+      <h2>Report a Lost Item</h2>
+
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.7"
+             stroke-linecap="round" stroke-linejoin="round"
+             aria-hidden="true">
+          <circle cx="10.5" cy="10.5" r="6.5"/>
+          <path d="m15.5 15.5 5 5"/>
+          <path d="M8 10.5h5"/>
+        </svg>
+      </div>
+    </div>
+
+    <p>
+      Have you lost something? Submit a report to help others
+      identify your missing belongings and contact you if they
+      are found.
+    </p>
+
+    <h3>How to report:</h3>
+
+    <ol>
+      <li>Open the Lost Item reporting form.</li>
+      <li>Enter the item's name, description, and category.</li>
+      <li>Provide the date and location where you lost it.</li>
+      <li>Upload a photo if available.</li>
+      <li>Submit your report.</li>
+    </ol>
+
+    <button routerLink="/report-lost">
+      Report Lost Item
+    </button>
+  </div>
+
+  <!-- Found Item Card -->
+  <div class="report-card found-card">
+
+    <div class="card-header">
+      <h2>Report a Found Item</h2>
+
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.7"
+             stroke-linecap="round" stroke-linejoin="round"
+             aria-hidden="true">
+          <path d="M12 3 5 7v8l7 4 7-4V7l-7-4Z"/>
+          <path d="m5 7 7 4 7-4"/>
+          <path d="M12 11v8"/>
+        </svg>
+      </div>
+    </div>
+
+    <p>
+      Found something that might belong to someone else?
+      Submit a report so its owner can identify and recover it.
+    </p>
+
+    <h3>How to report:</h3>
+
+    <ol>
+      <li>Open the Found Item reporting form.</li>
+      <li>Enter the item's name, description, and category.</li>
+      <li>Provide where and when you found it.</li>
+      <li>Upload a photo if available.</li>
+      <li>Submit your report and follow the turnover instructions.</li>
+    </ol>
+
+    <button routerLink="/report-found">
+      Report Found Item
+    </button>
+  </div>
+
+  <!-- Track Claim Card -->
+  <div class="report-card claim-card">
+
+    <div class="card-header">
+      <h2>Track My Claim</h2>
+
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.7"
+             stroke-linecap="round" stroke-linejoin="round"
+             aria-hidden="true">
+          <rect x="5" y="4" width="14" height="17" rx="2"/>
+          <path d="M9 4V3h6v1"/>
+          <path d="m8.5 12 2 2 5-5"/>
+          <path d="M9 17h6"/>
+        </svg>
+      </div>
+    </div>
+
+    <p>
+      Already submitted a claim for a lost item?
+      Use your claim reference number to check the current
+      status of your claim and see whether it has been approved
+      or rejected.
+    </p>
+
+    <h3>How to track your claim:</h3>
+
+    <ol>
+      <li>Open the Claim Tracker.</li>
+      <li>Enter your claim reference number.</li>
+      <li>Submit the reference number.</li>
+      <li>View your claim status.</li>
+    </ol>
+
+    <button routerLink="/claim-tracker">
+      Track My Claim
+    </button>
+  </div>
+
+</section>

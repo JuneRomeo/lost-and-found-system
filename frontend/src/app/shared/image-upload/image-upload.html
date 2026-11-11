@@ -1,0 +1,26 @@
+
+<div class="image-upload-container">
+
+  <h3>Upload Item Photo</h3>
+
+  <p>Select an image of the lost or found item.</p>
+
+  <input
+    type="file"
+    accept="image/*"
+    (change)="onFileSelected($event)"
+  />
+
+  @if (imagePreview) {
+    <div class="image-preview">
+      <img [src]="imagePreview" alt="Selected item preview" />
+
+      <button type="button" (click)="removeImage()">
+        Remove Image
+      </button>
+    </div>
+  }
+
+  <p class="upload-note">Maximum file size: 5 MB.</p>
+
+</div>

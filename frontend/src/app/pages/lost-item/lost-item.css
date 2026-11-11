@@ -1,0 +1,228 @@
+/* =================================
+   LOST ITEM PAGE
+================================= */
+
+.lost-item-container {
+  max-width: 650px;
+  margin: 45px auto;
+  padding: 35px;
+  background: #FFFFFF;
+  border: 1px solid #D5E0D9;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(19, 50, 43, 0.07);
+}
+
+.lost-item-container > h2 {
+  color: #13322B;
+  font-size: 27px;
+  margin: 0 0 8px;
+}
+
+.lost-item-container .page-description {
+  color: #496158;
+  margin: 0 0 28px;
+  line-height: 1.6;
+}
+
+/* =================================
+   FORM
+================================= */
+
+.lost-item-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lost-item-container .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lost-item-container label {
+  font-weight: 600;
+  color: #245344;
+  font-size: 14px;
+}
+
+.lost-item-container input,
+.lost-item-container textarea,
+.lost-item-container select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #C9D8CF;
+  border-radius: 8px;
+  background: #FAFCFA;
+  color: #263D33;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.lost-item-container input:focus,
+.lost-item-container textarea:focus,
+.lost-item-container select:focus {
+  border-color: #176B57;
+  box-shadow: 0 0 0 3px rgba(23, 107, 87, 0.10);
+  background: #FFFFFF;
+}
+
+.lost-item-container textarea {
+  min-height: 115px;
+  resize: vertical;
+}
+
+.lost-item-container input::placeholder,
+.lost-item-container textarea::placeholder {
+  color: #91A198;
+}
+
+/* =================================
+   SUBMIT BUTTON
+================================= */
+
+.lost-item-container .submit-button {
+  width: 100%;
+  margin-top: 5px;
+  padding: 14px;
+  background: #176B57;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.lost-item-container .submit-button:hover {
+  background: #245344;
+}
+
+.lost-item-container .submit-button:active {
+  transform: scale(0.99);
+}
+
+/* =================================
+   SUCCESS MESSAGE
+================================= */
+
+.lost-item-container .turnover-code-result {
+  margin: 25px 0 30px;
+  padding: 25px;
+  background: #F0F6F1;
+  border: 1px solid #C9DCCF;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.lost-item-container .success-label {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 6px 12px;
+  background: #DCEDE1;
+  color: #245344;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.lost-item-container .turnover-code-result h2 {
+  color: #13322B;
+  font-size: 21px;
+  margin: 0 0 15px;
+}
+
+.lost-item-container .success-message {
+  margin: 15px 0 20px;
+  color: #496158;
+  line-height: 1.6;
+}
+
+/* =================================
+   NEXT STEPS
+================================= */
+
+.lost-item-container .turnover-reminder {
+  margin-top: 25px;
+  padding: 20px;
+  background: #FFFFFF;
+  border: 1px solid #D5E0D9;
+  border-radius: 9px;
+  text-align: left;
+}
+
+.lost-item-container .turnover-reminder h3 {
+  margin: 0 0 12px;
+  color: #245344;
+  font-size: 17px;
+}
+
+.lost-item-container .turnover-reminder ol {
+  padding-left: 22px;
+  margin: 0 0 18px;
+  color: #496158;
+  line-height: 1.8;
+}
+
+.lost-item-container .turnover-reminder li {
+  padding-left: 4px;
+  margin-bottom: 5px;
+}
+
+.lost-item-container .turnover-reminder p {
+  margin: 0;
+  padding: 12px;
+  background: #F8F1E5;
+  border-left: 4px solid #C49A52;
+  border-radius: 5px;
+  color: #665333;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.lost-item-container .dismiss-button {
+  width: 100%;
+  margin: 18px 0 0;
+  padding: 11px;
+  background: #DCE7DF;
+  color: #245344;
+  border: none;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.lost-item-container .dismiss-button:hover {
+  background: #C9D8CF;
+}
+
+/* =================================
+   RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 600px) {
+  .lost-item-container {
+    width: calc(100% - 24px);
+    box-sizing: border-box;
+    margin: 20px auto;
+    padding: 22px 18px;
+  }
+
+  .lost-item-container > h2 {
+    font-size: 23px;
+  }
+
+  .lost-item-container .turnover-code-result {
+    padding: 18px 14px;
+  }
+
+  .lost-item-container .turnover-reminder {
+    padding: 16px;
+  }
+}

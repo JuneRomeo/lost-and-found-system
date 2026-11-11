@@ -1,0 +1,293 @@
+/* =================================
+   CLAIM TRACKER PAGE
+================================= */
+
+.tracker-container {
+  max-width: 700px;
+  margin: 45px auto;
+  padding: 35px;
+  background: #FFFFFF;
+  border: 1px solid #D5E0D9;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(19, 50, 43, 0.07);
+}
+
+.tracker-header h1 {
+  margin: 0 0 8px;
+  color: #13322B;
+  font-size: 27px;
+}
+
+.tracker-header p {
+  margin: 0 0 28px;
+  color: #496158;
+  line-height: 1.6;
+}
+
+/* =================================
+   SEARCH FORM
+================================= */
+
+.tracker-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tracker-container label {
+  color: #245344;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tracker-container input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #C9D8CF;
+  border-radius: 8px;
+  background: #FAFCFA;
+  color: #263D33;
+  font-size: 15px;
+  outline: none;
+}
+
+.tracker-container input:focus {
+  border-color: #176B57;
+  box-shadow: 0 0 0 3px rgba(23, 107, 87, 0.10);
+  background: #FFFFFF;
+}
+
+.tracker-container button {
+  width: 100%;
+  margin-top: 8px;
+  padding: 13px;
+  background: #176B57;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.tracker-container button:hover {
+  background: #245344;
+}
+
+/* =================================
+   ERROR MESSAGE
+================================= */
+
+.error-message {
+  margin-top: 20px;
+  padding: 14px;
+  background: #F8E9E7;
+  border: 1px solid #E5C5C0;
+  border-left: 4px solid #B85C50;
+  border-radius: 8px;
+  color: #8F3F36;
+  line-height: 1.5;
+}
+
+/* =================================
+   CLAIM RESULT
+================================= */
+
+.claim-result {
+  margin-top: 30px;
+  padding: 25px;
+  background: #F7FAF7;
+  border: 1px solid #D5E0D9;
+  border-radius: 12px;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.result-header h2 {
+  margin: 0;
+  color: #13322B;
+  font-size: 21px;
+}
+
+/* =================================
+   STATUS BADGES
+================================= */
+
+.status-badge {
+  padding: 7px 13px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status-badge.pending {
+  background: #FFF1D6;
+  color: #89631D;
+}
+
+.status-badge.approved {
+  background: #DCEDE1;
+  color: #245344;
+}
+
+.status-badge.rejected {
+  background: #F8E3E0;
+  color: #9B443B;
+}
+
+.status-badge.returned {
+  background: #DCE8F2;
+  color: #345A78;
+}
+
+/* =================================
+   CLAIM INFORMATION
+================================= */
+
+.claim-information {
+  background: #FFFFFF;
+  border: 1px solid #D5E0D9;
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.information-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #E8EFEA;
+}
+
+.information-row:last-child {
+  border-bottom: none;
+}
+
+.information-row span {
+  color: #718178;
+  font-size: 14px;
+}
+
+.information-row strong {
+  color: #245344;
+  font-size: 14px;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+/* =================================
+   STATUS MESSAGES
+================================= */
+
+.status-message {
+  margin-top: 22px;
+  padding: 20px;
+  border-radius: 9px;
+  line-height: 1.6;
+}
+
+.status-message h3 {
+  margin: 0 0 10px;
+  font-size: 17px;
+}
+
+.status-message p {
+  margin: 0 0 12px;
+}
+
+.status-message p:last-child {
+  margin-bottom: 0;
+}
+
+.pending-message {
+  background: #FFF7E8;
+  border: 1px solid #EBD8AD;
+  color: #735A2D;
+}
+
+.approved-message {
+  background: #EEF6F0;
+  border: 1px solid #C9DCCF;
+  color: #245344;
+}
+
+.rejected-message {
+  background: #FBF0EE;
+  border: 1px solid #E5C5C0;
+  color: #8F3F36;
+}
+
+.returned-message {
+  background: #EEF3F8;
+  border: 1px solid #CFDCE8;
+  color: #345A78;
+}
+
+.status-message ol {
+  padding-left: 22px;
+  margin: 12px 0;
+}
+
+.status-message li {
+  margin-bottom: 7px;
+}
+
+/* =================================
+   REJECTION REASON
+================================= */
+
+.rejection-reason {
+  margin-top: 16px;
+  padding: 14px;
+  background: #FFFFFF;
+  border-left: 4px solid #B85C50;
+  border-radius: 6px;
+}
+
+.rejection-reason strong {
+  display: block;
+  margin-bottom: 7px;
+}
+
+.rejection-reason p {
+  overflow-wrap: anywhere;
+}
+
+/* =================================
+   RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 600px) {
+  .tracker-container {
+    width: calc(100% - 24px);
+    margin: 20px auto;
+    padding: 22px 18px;
+  }
+
+  .tracker-header h1 {
+    font-size: 23px;
+  }
+
+  .claim-result {
+    padding: 17px;
+  }
+
+  .information-row {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .information-row strong {
+    text-align: left;
+  }
+
+}

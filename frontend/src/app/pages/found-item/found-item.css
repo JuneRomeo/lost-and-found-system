@@ -1,0 +1,274 @@
+/* =================================
+   FOUND ITEM PAGE
+================================= */
+
+.found-item-container {
+  max-width: 650px;
+  margin: 45px auto;
+  padding: 35px;
+  background: #FFFFFF;
+  border: 1px solid #D5E0D9;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(19, 50, 43, 0.07);
+}
+
+.found-item-container > h2 {
+  color: #13322B;
+  font-size: 27px;
+  margin: 0 0 8px;
+}
+
+.found-item-container .page-description {
+  color: #496158;
+  margin: 0 0 28px;
+  line-height: 1.6;
+}
+
+/* =================================
+   FORM
+================================= */
+
+.found-item-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.found-item-container label {
+  font-weight: 600;
+  color: #245344;
+  font-size: 14px;
+}
+
+.found-item-container input,
+.found-item-container textarea,
+.found-item-container select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #C9D8CF;
+  border-radius: 8px;
+  background: #FAFCFA;
+  color: #263D33;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.found-item-container input:focus,
+.found-item-container textarea:focus,
+.found-item-container select:focus {
+  border-color: #176B57;
+  box-shadow: 0 0 0 3px rgba(23, 107, 87, 0.10);
+  background: #FFFFFF;
+}
+
+.found-item-container textarea {
+  min-height: 115px;
+  resize: vertical;
+}
+
+.found-item-container input::placeholder,
+.found-item-container textarea::placeholder {
+  color: #91A198;
+}
+
+/* =================================
+   SUBMIT BUTTON
+================================= */
+
+.found-item-container .submit-button {
+  width: 100%;
+  margin-top: 5px;
+  padding: 14px;
+  background: #176B57;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.found-item-container .submit-button:hover {
+  background: #245344;
+}
+
+.found-item-container .submit-button:active {
+  transform: scale(0.99);
+}
+
+/* =================================
+   SUCCESS MESSAGE
+================================= */
+
+.turnover-code-result {
+  margin: 25px 0 30px;
+  padding: 25px;
+  background: #F0F6F1;
+  border: 1px solid #C9DCCF;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.turnover-code-result .success-label {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 6px 12px;
+  background: #DCEDE1;
+  color: #245344;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.turnover-code-result h2 {
+  color: #13322B;
+  font-size: 21px;
+  margin: 0 0 15px;
+}
+
+.turnover-code {
+  padding: 17px;
+  margin: 0 auto 15px;
+  background: #FFFFFF;
+  border: 2px dashed #176B57;
+  border-radius: 9px;
+  color: #13322B;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  overflow-wrap: anywhere;
+}
+
+.turnover-code-result .success-message {
+  margin: 20px 0;
+  color: #496158;
+  line-height: 1.6;
+}
+
+/* =================================
+   SUCCESS MESSAGE BUTTONS
+================================= */
+
+.found-item-container .copy-code-button {
+  margin: 0;
+  padding: 11px 20px;
+  background: #176B57;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.found-item-container .copy-code-button:hover {
+  background: #245344;
+}
+
+.turnover-code-result .copy-message {
+  margin: 10px 0;
+  color: #176B57;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* =================================
+   TURNOVER INSTRUCTIONS
+================================= */
+
+.turnover-reminder {
+  margin-top: 25px;
+  padding: 20px;
+  background: #FFFFFF;
+  border: 1px solid #D5E0D9;
+  border-radius: 9px;
+  text-align: left;
+}
+
+.turnover-reminder h3 {
+  margin: 0 0 12px;
+  color: #245344;
+  font-size: 17px;
+}
+
+.turnover-reminder ol {
+  padding-left: 22px;
+  margin: 0 0 18px;
+  color: #496158;
+  line-height: 1.8;
+}
+
+.turnover-reminder li {
+  padding-left: 4px;
+  margin-bottom: 5px;
+}
+
+.turnover-reminder p {
+  margin: 0;
+  padding: 12px;
+  background: #F8F1E5;
+  border-left: 4px solid #C49A52;
+  border-radius: 5px;
+  color: #665333;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.found-item-container .dismiss-button {
+  width: 100%;
+  margin: 18px 0 0;
+  padding: 11px;
+  background: #DCE7DF;
+  color: #245344;
+  border: none;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.found-item-container .dismiss-button:hover {
+  background: #C9D8CF;
+}
+
+
+/* =================================
+   RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 600px) {
+  .found-item-container {
+    width: calc(100% - 24px);
+    box-sizing: border-box;
+    margin: 20px auto;
+    padding: 22px 18px;
+  }
+
+  .found-item-container > h2 {
+    font-size: 23px;
+  }
+
+  .turnover-code-result {
+    padding: 18px 14px;
+  }
+
+  .turnover-code {
+    font-size: 22px;
+    padding: 14px 10px;
+  }
+
+  .turnover-reminder {
+    padding: 16px;
+  }
+}

@@ -1,0 +1,441 @@
+/* =================================
+   ITEM DETAILS PAGE
+================================= */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #E8EFEA;
+  padding: 45px 20px;
+  color: #263B35;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* =================================
+   CLAIM REFERENCE SUCCESS MESSAGE
+================================= */
+
+.claim-reference-result {
+  max-width: 650px;
+  margin: 25px auto 30px;
+  padding: 35px;
+  background: #FFFFFF;
+  border: 1px solid #D5E0D9;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(19, 50, 43, 0.07);
+  text-align: center;
+}
+
+.claim-reference-result .reference-label {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 6px 12px;
+  background: #DCEDE1;
+  color: #245344;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.claim-reference-result h3 {
+  color: #13322B;
+  font-size: 21px;
+  margin: 0 0 15px;
+}
+
+.claim-reference-result .reference-number {
+  display: block;
+  padding: 17px;
+  margin: 0 auto 15px;
+  background: #FFFFFF;
+  border: 2px dashed #176B57;
+  border-radius: 9px;
+  color: #13322B;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  overflow-wrap: anywhere;
+}
+
+.claim-reference-result p:not(.reference-label) {
+  margin: 20px 0;
+  color: #496158;
+  line-height: 1.6;
+}
+
+.claim-reference-result button {
+  margin: 0;
+  padding: 11px 20px;
+  background: #176B57;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.claim-reference-result button:hover {
+  background: #245344;
+}
+
+/* =================================
+   MOBILE RESPONSIVENESS
+================================= */
+
+@media (max-width: 600px) {
+  .claim-reference-result {
+    width: calc(100% - 24px);
+    padding: 22px 18px;
+    margin: 20px auto;
+  }
+
+  .claim-reference-result .reference-number {
+    font-size: 22px;
+    padding: 14px 10px;
+  }
+
+  .claim-reference-result h3 {
+    font-size: 19px;
+  }
+}
+
+/* =================================
+   DETAILS CONTAINER
+================================= */
+
+.details-container {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 35px;
+  background: #FFFFFF;
+  border: 1px solid #D5E0D9;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(19, 50, 43, 0.08);
+}
+
+.details-container h1 {
+  margin: 0 0 25px;
+  color: #13322B;
+  font-size: 30px;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+/* ITEM IMAGE */
+
+.details-container > img {
+  display: block;
+  width: 100%;
+  max-width: 550px;
+  height: 320px;
+  margin: 0 auto 30px;
+  object-fit: contain;
+  background: #F1F4F0;
+  border: 1px solid #DCE6DF;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.blurred-image {
+  filter: blur(8px);
+}
+
+/* =================================
+   ITEM INFORMATION
+================================= */
+
+.details-container > p {
+  padding: 13px 16px;
+  margin: 0 0 10px;
+  background: #F5F8F5;
+  border: 1px solid #E1EAE4;
+  border-radius: 8px;
+  color: #496158;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.details-container > p strong {
+  color: #13322B;
+  font-weight: 700;
+}
+
+/* =================================
+   CLAIM AND BACK BUTTONS
+================================= */
+
+.details-container > button {
+  display: block;
+  width: 100%;
+  margin: 25px 0 15px;
+  padding: 14px 20px;
+  background: #176B57;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.details-container > button:hover {
+  background: #245344;
+}
+
+.details-container > a {
+  display: inline-block;
+  margin-top: 12px;
+  color: #176B57;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.details-container > a:hover {
+  color: #13322B;
+  text-decoration: underline;
+}
+
+/* =================================
+   CLAIM MODAL OVERLAY
+================================= */
+
+.claim-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgba(19, 50, 43, 0.65);
+  overflow-y: auto;
+}
+
+/* =================================
+   CLAIM MODAL
+================================= */
+
+.claim-modal {
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 30px;
+  background: #FFFFFF;
+  border: 1px solid #D5E0D9;
+  border-radius: 15px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+}
+
+.claim-modal h2 {
+  margin: 0 0 10px;
+  color: #13322B;
+  font-size: 26px;
+}
+
+.claim-modal > p {
+  margin-bottom: 25px;
+  color: #60766B;
+  line-height: 1.6;
+}
+
+/* =================================
+   CLAIM FORM
+================================= */
+
+.claim-modal form {
+  display: flex;
+  flex-direction: column;
+}
+
+.claim-modal label {
+  margin: 15px 0 7px;
+  color: #29483C;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.claim-modal input,
+.claim-modal textarea {
+  width: 100%;
+  padding: 12px 14px;
+  background: #FAFCFA;
+  border: 1px solid #C9D9D0;
+  border-radius: 7px;
+  color: #263B35;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.claim-modal input:focus,
+.claim-modal textarea:focus {
+  border-color: #176B57;
+  box-shadow: 0 0 0 3px rgba(23, 107, 87, 0.10);
+}
+
+.claim-modal textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.claim-modal form > p {
+  margin: 5px 0 10px;
+  color: #60766B;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* =================================
+   DIGITAL SIGNATURE
+================================= */
+
+.signature-canvas {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  height: 200px;
+  margin: 10px 0 12px;
+  background: #FFFFFF;
+  border: 2px dashed #9BB5A5;
+  border-radius: 9px;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+/* =================================
+   MODAL BUTTONS
+================================= */
+
+.claim-modal button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+/* CLEAR SIGNATURE */
+
+.claim-modal form > button[type="button"] {
+  align-self: flex-start;
+  margin-bottom: 20px;
+  background: #E8EFEA;
+  color: #245344;
+}
+
+.claim-modal form > button[type="button"]:hover {
+  background: #D5E0D9;
+}
+
+/* SUBMIT AND CANCEL */
+
+.claim-modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.claim-modal-actions button {
+  flex: 1;
+}
+
+.claim-modal-actions button[type="submit"] {
+  background: #176B57;
+  color: #FFFFFF;
+}
+
+.claim-modal-actions button[type="submit"]:hover:not(:disabled) {
+  background: #245344;
+}
+
+.claim-modal-actions button[type="button"] {
+  background: #E8EFEA;
+  color: #29483C;
+}
+
+.claim-modal-actions button[type="button"]:hover:not(:disabled) {
+  background: #D5E0D9;
+}
+
+/* DISABLED BUTTONS */
+
+.claim-modal button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* =================================
+   MOBILE RESPONSIVENESS
+================================= */
+
+@media (max-width: 600px) {
+  :host {
+    padding: 25px 14px;
+  }
+
+  .claim-reference-result {
+    padding: 22px 18px;
+    margin-bottom: 22px;
+  }
+
+  .claim-reference-result .reference-number {
+    font-size: 20px;
+    padding: 15px 10px;
+  }
+
+  .claim-reference-result h3 {
+    font-size: 20px;
+  }
+
+  .details-container {
+    padding: 22px 18px;
+  }
+
+  .details-container h1 {
+    font-size: 24px;
+  }
+
+  .details-container > img {
+    height: 230px;
+  }
+
+  .details-container > p {
+    font-size: 14px;
+    padding: 11px 12px;
+  }
+
+  .claim-modal-overlay {
+    align-items: flex-start;
+    padding: 12px;
+  }
+
+  .claim-modal {
+    margin: auto 0;
+    padding: 22px 18px;
+    max-height: 94vh;
+  }
+
+  .claim-modal h2 {
+    font-size: 22px;
+  }
+
+  .signature-canvas {
+    height: 160px;
+  }
+
+  .claim-modal-actions {
+    flex-direction: column;
+  }
+}

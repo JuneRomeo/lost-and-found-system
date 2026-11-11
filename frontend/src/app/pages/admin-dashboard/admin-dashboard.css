@@ -1,0 +1,571 @@
+/* MAIN DASHBOARD */
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #E8EFEA;
+}
+
+.admin-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 35px 30px 60px;
+  color: #263D34;
+}
+
+/* HEADER */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.admin-header h1 {
+  margin: 0 0 8px;
+  color: #13322B;
+  font-size: 30px;
+}
+
+.admin-header p {
+  margin: 0;
+  color: #64776D;
+}
+
+.logout-button {
+  background: #13322B;
+  color: white;
+  padding: 11px 22px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.logout-button:hover {
+  background: #245344;
+}
+
+/* NAVIGATION TABS */
+.admin-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  padding: 10px;
+  background: #D5E0D9;
+  border: 1px solid #C7D5CC;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.admin-tabs button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  min-width: 0;
+  min-height: 54px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #496158;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.admin-tabs button:hover {
+  background: #E8EFEA;
+  color: #13322B;
+}
+
+.admin-tabs button.active {
+  background: #176B57;
+  color: white;
+  box-shadow: 0 2px 5px rgba(19, 50, 43, 0.15);
+}
+
+.tab-count {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  min-width: 21px;
+  height: 21px;
+  padding: 0 5px;
+  border-radius: 20px;
+  background: #E8EFEA;
+  color: #176B57;
+  font-size: 12px;
+}
+
+/* DASHBOARD SECTIONS */
+.dashboard-section {
+  animation: fadeIn 0.2s ease;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.section-heading h2 {
+  margin: 0 0 6px;
+  color: #13322B;
+  font-size: 24px;
+}
+
+.section-heading p {
+  margin: 0;
+  color: #64776D;
+}
+
+.section-count {
+  background: #D5E5DB;
+  color: #245344;
+  padding: 9px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.error-message {
+  padding: 12px 16px;
+  background: #FCE8E6;
+  color: #A33A32;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.location-notice {
+  background: #F5EBD3;
+  color: #806025;
+  border: 1px solid #E8D9B5;
+  padding: 13px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* ITEM AND CLAIM LISTS */
+.items-list,
+.claims-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.item-card,
+.claim-card {
+  background: #FFFFFF;
+  border: 1px solid #D5E0D9;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 3px 10px rgba(19, 50, 43, 0.06);
+  min-width: 0;
+}
+
+.item-card h3,
+.claim-card h3 {
+  margin: 0 0 15px;
+  color: #13322B;
+  font-size: 19px;
+}
+
+.item-card p,
+.claim-card p {
+  margin: 10px 0;
+  color: #496158;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.item-card strong,
+.claim-card strong {
+  color: #263D34;
+}
+
+/* ITEM CARD HEADER */
+.item-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.item-card-header h3 {
+  margin: 0;
+}
+
+/* ITEM IMAGES */
+.item-image {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background: #F4F7F4;
+  border: 1px solid #E1E9E3;
+  border-radius: 8px;
+  margin-bottom: 18px;
+}
+
+/* LOCATION STATUS */
+.location-recorded,
+.location-pending {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.location-recorded {
+  background: #DCEFE3;
+  color: #246344;
+}
+
+.location-pending {
+  background: #F8EDD5;
+  color: #89651F;
+}
+
+/* STORAGE LOCATION */
+.pickup-location,
+.pickup-assignment {
+  margin-top: 18px;
+  padding: 16px;
+  background: #F1F6F2;
+  border: 1px solid #D5E0D9;
+  border-radius: 9px;
+}
+
+.pickup-location h4,
+.pickup-assignment h4 {
+  margin: 0 0 12px;
+  color: #245344;
+  font-size: 16px;
+}
+
+.pickup-location p {
+  margin: 7px 0;
+}
+
+.pickup-assignment label {
+  display: block;
+  margin: 12px 0 6px;
+  color: #496158;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.pickup-assignment input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  border: 1px solid #C7D5CC;
+  border-radius: 7px;
+  background: white;
+  color: #263D34;
+  outline: none;
+}
+
+.pickup-assignment input:focus {
+  border-color: #176B57;
+  box-shadow: 0 0 0 2px rgba(23, 107, 87, 0.12);
+}
+
+/* GENERAL BUTTONS */
+.item-card button,
+.claim-card button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 7px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.pickup-assignment button {
+  width: 100%;
+  margin-top: 15px;
+  background: #176B57;
+  color: white;
+}
+
+.pickup-assignment button:hover {
+  background: #245344;
+}
+
+/* DELETE BUTTON */
+.delete-button {
+  margin-top: 15px;
+  background: #FCE8E6;
+  color: #A33A32;
+}
+
+.delete-button:hover {
+  background: #F7D4D0;
+}
+
+/* RETURN BUTTON */
+.return-button {
+  margin-top: 15px;
+  background: #176B57;
+  color: white;
+}
+
+.return-button:hover {
+  background: #245344;
+}
+
+/* CLAIM STATUS */
+.pending-status,
+.approved-status,
+.rejected-status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.pending-status {
+  color: #89651F;
+  background: #F8EDD5;
+}
+
+.approved-status {
+  color: #246344;
+  background: #DCEFE3;
+}
+
+.rejected-status {
+  color: #A33A32;
+  background: #FCE8E6;
+}
+
+/* CLAIM ACTIONS */
+.claim-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.claim-actions button {
+  flex: 1;
+}
+
+.approve-button {
+  background: #176B57;
+  color: white;
+}
+
+.approve-button:hover {
+  background: #245344;
+}
+
+.reject-button {
+  background: #FCE8E6;
+  color: #A33A32;
+}
+
+.reject-button:hover {
+  background: #F7D4D0;
+}
+
+/* CLAIM PROOF */
+.claim-proof {
+  margin-top: 15px;
+  padding: 15px;
+  background: #F1F6F2;
+  border-radius: 8px;
+}
+
+.proof-image {
+  display: block;
+  max-width: 100%;
+  width: 300px;
+  max-height: 250px;
+  object-fit: contain;
+  border: 1px solid #D5E0D9;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.claim-signature {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.signature-image {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: 150px;
+  object-fit: contain;
+  background: white;
+  border: 1px solid #D5E0D9;
+  border-radius: 6px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* EMPTY STATE */
+.empty-message {
+  padding: 35px 20px;
+  text-align: center;
+  background: #F5F8F5;
+  border: 1px dashed #C7D5CC;
+  border-radius: 10px;
+  color: #64776D;
+}
+
+/* TAB TRANSITION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 750px) {
+  .admin-container {
+    padding: 22px 16px 40px;
+  }
+
+  .admin-header {
+    align-items: flex-start;
+  }
+
+  .admin-header h1 {
+    font-size: 25px;
+  }
+
+  .admin-tabs {
+  gap: 7px;
+  padding: 7px;
+  }
+
+  .admin-tabs button {
+    min-height: 58px;
+    padding: 9px 5px;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .item-card,
+  .claim-card {
+    padding: 17px;
+  }
+
+  .item-image {
+    height: 170px;
+  }
+
+  .item-card-header {
+    flex-wrap: wrap;
+  }
+  .section-heading {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-header {
+  align-items: flex-start;
+  flex-wrap: wrap;
+  }
+
+  .logout-button {
+    width: 100%;
+  }
+
+  .section-heading {
+    flex-direction: column;
+  }
+
+  .items-list,
+  .claims-list {
+    grid-template-columns: 1fr;
+  }
+
+  .claim-actions {
+    flex-direction: column;
+  }
+}
+
+.returned-claim-info {
+  margin-top: 18px;
+  padding: 16px;
+  background: #E8EFEA;
+  border: 1px solid #D5E0D9;
+  border-radius: 10px;
+}
+
+.returned-claim-info h4 {
+  color: #13322B;
+  margin: 0 0 12px;
+}
+
+.returned-claim-info p {
+  color: #496158;
+  margin: 7px 0;
+}
+
+.return-date-record {
+  margin-top: 16px;
+  padding: 15px;
+  background: #D5E0D9;
+  border: 1px solid #B8CCC0;
+  border-radius: 10px;
+}
+
+.return-date-record h4 {
+  color: #13322B;
+  margin: 0 0 10px;
+}
+
+.return-date-record p {
+  color: #496158;
+  margin: 7px 0;
+}
+
+/* Claim Rejection Reason */
+.rejection-reason {
+  margin-top: 16px;
+  padding: 15px;
+  background: #F8E9E7;
+  border: 1px solid #E5C5C0;
+  border-left: 4px solid #B85C50;
+  border-radius: 10px;
+}
+
+.rejection-reason h4 {
+  color: #8F3F36;
+  margin: 0 0 8px;
+}
+
+.rejection-reason p {
+  color: #654640;
+  margin: 0;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}

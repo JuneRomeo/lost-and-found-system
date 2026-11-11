@@ -1,0 +1,286 @@
+
+/* =================================
+   GENERAL PAGE STYLING
+================================= */
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: #263238;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* =================================
+   NAVIGATION BAR
+================================= */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px 8%;
+  background-color: #D1E0D6;
+  box-shadow: 0 3px 12px rgba(19, 50, 43, 0.12);
+  gap: 25px;
+}
+
+/* Website logo */
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #13322B;
+  letter-spacing: -0.5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Navigation links and login button */
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #37474f;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+nav a:hover {
+  color: #176b57;
+}
+
+nav a.active {
+  color: #176b57;
+  font-weight: 700;
+}
+
+/* Buttons */
+
+button {
+  border: none;
+  border-radius: 6px;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.login-btn {
+  background-color: #176b57;
+  color: white;
+  white-space: nowrap;
+}
+
+.login-btn:hover {
+  background-color: #245344;
+  opacity: 1;
+}
+
+/* =================================
+   HERO SECTION
+================================= */
+
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background-color: #eaf5f0;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  color: #176b57;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 0 auto 30px;
+  line-height: 1.7;
+  color: #546e64;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.lost-btn {
+  background-color: #176b57;
+  color: white;
+}
+
+.found-btn {
+  background-color: #ffffff;
+  color: #176b57;
+  border: 1px solid #176b57;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+/* =================================
+   CATEGORIES SECTION
+================================= */
+
+.categories {
+  padding: 65px 8%;
+  text-align: center;
+}
+
+.categories h2 {
+  margin-bottom: 35px;
+  color: #263238;
+}
+
+.category-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.category-card {
+  padding: 35px 20px;
+  background-color: #ffffff;
+  border: 1px solid #e0e7e3;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+.category-card h3 {
+  color: #176b57;
+}
+
+.category-card p {
+  color: #607d73;
+  line-height: 1.6;
+}
+
+/* =================================
+   FOOTER
+================================= */
+
+footer {
+  width: 100%;
+  margin-top: auto;
+  padding: 22px;
+  text-align: center;
+  background-color: #176b57;
+  color: white;
+}
+
+/* =================================
+   SHARED PAGE LAYOUT
+================================= */
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 8%;
+}
+
+.page-container h1 {
+  color: #176b57;
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.page-container p {
+  color: #546e64;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+/* =================================
+   TABLET AND MOBILE RESPONSIVENESS
+================================= */
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 17px 4%;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .nav-actions {
+    gap: 18px;
+  }
+
+  nav {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 18px;
+    padding: 20px;
+  }
+
+  .logo {
+    font-size: 26px;
+  }
+
+  .nav-actions {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .hero {
+    padding: 65px 20px;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .category-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 400px) {
+  .logo {
+    font-size: 23px;
+  }
+
+  nav {
+    gap: 12px;
+    font-size: 13px;
+  }
+}

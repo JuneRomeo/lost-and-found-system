@@ -1,0 +1,240 @@
+
+/* =================================
+   GLOBAL HOMEPAGE STYLES
+================================= */
+
+:host {
+  display: block;
+  min-height: 100%;
+  color: #263b35;
+  background: #E8EFEA;
+}
+
+button {
+  border: none;
+  border-radius: 9px;
+  padding: 13px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  background: #245344;
+  box-shadow: 0 6px 15px rgba(19, 50, 43, 0.18);
+}
+
+button:focus-visible {
+  outline: 3px solid #8BAF9C;
+  outline-offset: 3px;
+}
+
+/* =================================
+   HERO SECTION
+================================= */
+
+.hero {
+  text-align: center;
+  padding: 35px 20px 30px;
+  background: transparent;
+  border-bottom: none;
+}
+
+.hero h1 {
+  max-width: 900px;
+  margin: 0 auto 15px;
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.2;
+  font-weight: 800;
+  color: #13322B;
+  letter-spacing: -1px;
+}
+
+.hero p {
+  max-width: 760px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-size: 16px;
+  color: #49645A;
+}
+
+/* =================================
+   REPORTING AND TRACKING CARDS
+================================= */
+
+.report-options {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 28px 25px 40px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  background: transparent;
+}
+
+.report-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 25px 24px;
+  border: 1px solid #C9D9D0;
+  border-radius: 15px;
+  box-shadow: 0 5px 18px rgba(19, 50, 43, 0.07);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.report-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(19, 50, 43, 0.12);
+}
+
+/* Individual card backgrounds */
+
+.lost-card {
+  background: #DCE8E1;
+}
+
+.found-card {
+  background: #F1EDE3;
+}
+
+.claim-card {
+  background: #E5ECE5;
+}
+
+/* Card headings */
+
+.report-card h2 {
+  margin: 0 0 12px;
+  color: #13322B;
+  font-size: 21px;
+  font-weight: 750;
+}
+
+/* Card descriptions */
+
+.report-card p {
+  margin: 0 0 15px;
+  color: #496158;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Instructions */
+
+.report-card h3 {
+  margin: 8px 0 10px;
+  color: #29483C;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.report-card ol {
+  padding-left: 21px;
+  margin: 0 0 25px;
+  color: #526B60;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.report-card li {
+  padding-left: 3px;
+}
+
+/* Action buttons */
+
+.report-card button {
+  margin-top: auto;
+  background: #13322B;
+  color: #FFFFFF;
+  width: 100%;
+  box-shadow: 0 3px 10px rgba(19, 50, 43, 0.12);
+}
+
+.report-card button:hover {
+  background: #245344;
+}
+
+/* =================================
+   TABLET LAYOUT
+================================= */
+
+@media (max-width: 900px) {
+  .report-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 25px 20px 35px;
+  }
+}
+
+/* =================================
+   MOBILE LAYOUT
+================================= */
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 35px 20px 28px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .report-options {
+    grid-template-columns: 1fr;
+    padding: 22px 18px 35px;
+    gap: 18px;
+  }
+
+  .report-card {
+    padding: 24px 21px;
+  }
+
+  .report-card h2 {
+    font-size: 20px;
+  }
+}
+
+/* =================================
+   CARD ICONS
+================================= */
+
+
+/* Card heading and icon layout */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.card-header h2 {
+  margin: 0;
+}
+
+/* Smaller icons at the top-right */
+.card-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #13322B;
+}
+
+.card-icon svg {
+  width: 27px;
+  height: 27px;
+  display: block;
+}

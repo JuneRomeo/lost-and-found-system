@@ -1,0 +1,68 @@
+
+<div class="front-desk-container">
+
+  <h1>Front Desk Intake</h1>
+
+  <p>Record found items turned over to the front desk and assign their storage locations.</p>
+
+  @if (successMessage()) {
+    <div class="success-message">
+      {{ successMessage() }}
+    </div>
+  }
+
+  @if (errorMessage()) {
+    <div class="error-message">
+      {{ errorMessage() }}
+    </div>
+  }
+
+  <section class="intake-card">
+
+    <h2>Record Item Turnover</h2>
+
+    <div class="form-group">
+      <label for="item">Select Found Item</label>
+
+      <select id="item" [(ngModel)]="selectedItemId">
+        <option value="">-- Select an item --</option>
+
+        @for (item of foundItems(); track item._id) {
+          @if (!item.isTurnedOver && item.status !== 'returned') {
+            <option [value]="item._id">
+              {{ item.itemName }} - {{ item.category }}
+            </option>
+          }
+        }
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="cabinet">Cabinet Number</label>
+
+      <input
+        id="cabinet"
+        type="text"
+        [(ngModel)]="cabinetNumber"
+        placeholder="Example: Cabinet 1"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="shelf">Shelf Number</label>
+
+      <input
+        id="shelf"
+        type="text"
+        [(ngModel)]="shelfNumber"
+        placeholder="Example: Shelf 2"
+      >
+    </div>
+
+    <button type="button" (click)="recordTurnover()">
+      Record Turnover
+    </button>
+
+  </section>
+
+</div>

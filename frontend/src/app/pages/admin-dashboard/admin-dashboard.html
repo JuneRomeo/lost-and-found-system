@@ -1,0 +1,530 @@
+<div class="admin-container">
+
+  <header class="admin-header">
+    <div>
+      <h1>Admin Dashboard</h1>
+      <p>Manage found reports, lost reports, claims, and returned items.</p>
+    </div>
+
+    <button type="button" class="logout-button" (click)="logout()">
+      Logout
+    </button>
+  </header>
+
+  @if (errorMessage()) {
+    <p class="error-message">{{ errorMessage() }}</p>
+  }
+
+  <!-- DASHBOARD TABS -->
+  <nav class="admin-tabs">
+
+    <button
+      type="button"
+      [class.active]="activeTab() === 'found'"
+      (click)="selectTab('found')">
+      Found Item Reports
+
+      @if (pendingLocationCount() > 0) {
+        <span class="tab-count">{{ pendingLocationCount() }}</span>
+      }
+    </button>
+
+    <button
+      type="button"
+      [class.active]="activeTab() === 'lost'"
+      (click)="selectTab('lost')">
+      Lost Item Reports
+    </button>
+
+    <button
+      type="button"
+      [class.active]="activeTab() === 'claims'"
+      (click)="selectTab('claims')">
+      Submitted Claims
+    </button>
+
+    <button
+      type="button"
+      [class.active]="activeTab() === 'returned'"
+      (click)="selectTab('returned')">
+      Returned Items
+    </button>
+
+  </nav>
+
+
+  <!-- FOUND ITEM REPORTS -->
+  @if (activeTab() === 'found') {
+
+    <section class="dashboard-section">
+
+      <div class="section-heading">
+        <div>
+          <h2>Found Item Reports</h2>
+          <p>Manage found items and record their storage locations.</p>
+        </div>
+
+        <span class="section-count">
+          {{ foundItems().length }} Reports
+        </span>
+      </div>
+
+      @if (pendingLocationCount() > 0) {
+        <p class="location-notice">
+          {{ pendingLocationCount() }} found item(s) still need a recorded storage location.
+        </p>
+      }
+
+      @if (foundItems().length > 0) {
+
+        <div class="items-list">
+
+          @for (item of foundItems(); track item._id) {
+
+            <div class="item-card">
+
+              <div class="item-card-header">
+                <h3>{{ item.itemName }}</h3>
+
+                @if (item.isTurnedOver) {
+                  <span class="location-recorded">
+                    Location Recorded
+                  </span>
+                } @else {
+                  <span class="location-pending">
+                    Awaiting Location
+                  </span>
+                }
+              </div>
+
+              @if (item.imageUrl) {
+                <img
+                  [src]="item.imageUrl"
+                  alt="Found item photo"
+                  class="item-image"
+                >
+              }
+
+              <p><strong>Description:</strong> {{ item.description }}</p>
+              <p><strong>Category:</strong> {{ item.category }}</p>
+              <p><strong>Found At:</strong> {{ item.location }}</p>
+              <p>
+                <strong>Date Found:</strong>
+                {{ item.dateLostFound | date:'mediumDate' }}
+              </p>
+
+              <p>
+                <strong>Item Status:</strong>
+                {{ item.status | titlecase }}
+              </p>
+
+              @if (item.isTurnedOver) {
+
+                <div class="pickup-location">
+                  <h4>Recorded Storage Location</h4>
+                  <p><strong>Cabinet:</strong> {{ item.cabinetNumber }}</p>
+                  <p><strong>Shelf:</strong> {{ item.shelfNumber }}</p>
+                </div>
+
+              } @else {
+
+                <div class="pickup-assignment">
+
+                  <h4>Record Storage Location</h4>
+
+                  <label [for]="'cabinet-' + item._id">
+                    Cabinet Number
+                  </label>
+
+                  <input
+                    #cabinetInput
+                    [id]="'cabinet-' + item._id"
+                    type="text"
+                    placeholder="e.g. C-01"
+                  >
+
+                  <label [for]="'shelf-' + item._id">
+                    Shelf Number
+                  </label>
+
+                  <input
+                    #shelfInput
+                    [id]="'shelf-' + item._id"
+                    type="text"
+                    placeholder="e.g. S-02"
+                  >
+
+                  <button
+                    type="button"
+                    (click)="assignPickupLocation(
+                      item._id,
+                      cabinetInput.value,
+                      shelfInput.value
+                    )">
+                    Save Storage Location
+                  </button>
+
+                </div>
+
+              }
+
+
+            </div>
+
+          }
+
+        </div>
+
+      } @else {
+        <p class="empty-message">No found item reports available.</p>
+      }
+
+    </section>
+
+  }
+
+
+  <!-- LOST ITEM REPORTS -->
+  @if (activeTab() === 'lost') {
+
+    <section class="dashboard-section">
+
+      <div class="section-heading">
+        <div>
+          <h2>Lost Item Reports</h2>
+          <p>Review items reported missing by users.</p>
+        </div>
+
+        <span class="section-count">
+          {{ lostItems().length }} Reports
+        </span>
+      </div>
+
+      @if (lostItems().length > 0) {
+
+        <div class="items-list">
+
+          @for (item of lostItems(); track item._id) {
+
+            <div class="item-card">
+
+              <h3>{{ item.itemName }}</h3>
+
+              @if (item.imageUrl) {
+                <img
+                  [src]="item.imageUrl"
+                  alt="Lost item photo"
+                  class="item-image"
+                >
+              }
+
+              <p><strong>Description:</strong> {{ item.description }}</p>
+              <p><strong>Category:</strong> {{ item.category }}</p>
+              <p><strong>Last Known Location:</strong> {{ item.location }}</p>
+              <p>
+                <strong>Date Lost:</strong>
+                {{ item.dateLostFound | date:'mediumDate' }}
+              </p>
+
+
+              <button
+                type="button"
+                class="delete-button"
+                (click)="deleteLostItem(item._id)">
+                Delete Report
+              </button>
+
+            </div>
+
+          }
+
+        </div>
+
+      } @else {
+        <p class="empty-message">No lost item reports found.</p>
+      }
+
+    </section>
+
+  }
+
+
+  <!-- SUBMITTED CLAIMS -->
+  @if (activeTab() === 'claims') {
+
+    <section class="dashboard-section">
+
+      <div class="section-heading">
+        <div>
+          <h2>Submitted Claims</h2>
+          <p>Review and manage item ownership claims.</p>
+        </div>
+
+        <span class="section-count">
+          {{ submittedClaims().length }} Claims
+        </span>
+      </div>
+
+      @if (submittedClaims().length > 0) {
+
+        <div class="claims-list">
+
+          @for (claim of submittedClaims(); track claim._id) {
+
+            <div class="claim-card">
+
+              <h3>{{ claim.item?.itemName || 'Unknown Item' }}</h3>
+
+              <p><strong>Claimant:</strong> {{ claim.claimantName }}</p>
+              <p><strong>Reference:</strong> {{ claim.claimReference || 'Not assigned' }}</p>
+              <p><strong>Contact:</strong> {{ claim.contactNumber }}</p>
+              <p><strong>Email:</strong> {{ claim.email || 'Not provided' }}</p>
+              <p><strong>Claim Details:</strong> {{ claim.claimDetails }}</p>
+
+              @if (hasProofImage(claim)) {
+                <div class="claim-proof">
+                  <p><strong>Submitted Proof:</strong></p>
+                  <img
+                    [src]="claim.proofImageUrl"
+                    alt="Claimant's submitted proof"
+                    class="proof-image"
+                  >
+                </div>
+              } @else {
+                <p><strong>Submitted Proof:</strong> No proof image provided.</p>
+              }
+
+              @if (claim.signatureData) {
+                <div class="claim-signature">
+                  <p><strong>Claimant's Digital Signature:</strong></p>
+                  <img
+                    [src]="claim.signatureData"
+                    alt="Claimant's digital signature"
+                    class="signature-image"
+                  >
+                </div>
+              } @else {
+                <p><strong>Digital Signature:</strong> Not provided.</p>
+              }
+
+              <p>
+                <strong>Claim Status:</strong>
+
+                <span
+                  [class.pending-status]="claim.status === 'pending'"
+                  [class.approved-status]="claim.status === 'approved'"
+                  [class.rejected-status]="claim.status === 'rejected'">
+                  {{ claim.status | titlecase }}
+                </span>
+              </p>
+
+              @if (claim.status === 'rejected' && claim.rejectionReason) {
+                <div class="rejection-reason">
+                  <h4>Reason for Rejection</h4>
+                  <p>{{ claim.rejectionReason }}</p>
+                </div>
+              }
+
+              @if (claim.status === 'pending') {
+
+                <div class="claim-actions">
+
+                  <button
+                    type="button"
+                    class="approve-button"
+                    (click)="updateClaimStatus(claim._id, 'approved')">
+                    Approve Claim
+                  </button>
+
+                  <button
+                    type="button"
+                    class="reject-button"
+                    (click)="updateClaimStatus(claim._id, 'rejected')">
+                    Reject Claim
+                  </button>
+
+                  
+
+                </div>
+
+              }
+
+
+
+            </div>
+
+          }
+
+        </div>
+
+      } @else {
+        <p class="empty-message">No submitted claims found.</p>
+      }
+
+    </section>
+
+  }
+
+
+
+  <!-- RETURNED ITEMS -->
+  @if (activeTab() === 'returned') {
+
+    <section class="dashboard-section">
+
+      <div class="section-heading">
+        <div>
+          <h2>Returned Items</h2>
+          <p>
+            Manage approved claims and document items handed back to their owners.
+          </p>
+        </div>
+
+        <span class="section-count">
+          {{ returnedItems().length }} Items
+        </span>
+      </div>
+
+      @if (returnedItems().length > 0) {
+
+        <div class="items-list">
+
+          @for (item of returnedItems(); track item._id) {
+
+            @let returnedClaim = getReturnedClaim(item._id);
+
+            <div class="item-card">
+
+              <div class="item-card-header">
+                <h3>{{ item.itemName }}</h3>
+
+                @if (item.status === 'returned') {
+                  <span class="location-recorded">
+                    Returned
+                  </span>
+                } @else {
+                  <span class="location-pending">
+                    Awaiting Handover
+                  </span>
+                }
+              </div>
+
+              @if (item.imageUrl) {
+                <img
+                  [src]="item.imageUrl"
+                  alt="Found item photo"
+                  class="item-image"
+                >
+              }
+
+              <p>
+                <strong>Category:</strong>
+                {{ item.category }}
+              </p>
+
+              <p>
+                <strong>Original Found Location:</strong>
+                {{ item.location }}
+              </p>
+
+              <p>
+                <strong>Date Found:</strong>
+                {{ item.dateLostFound | date:'mediumDate' }}
+              </p>
+
+              <p>
+                <strong>Item Status:</strong>
+                {{ item.status | titlecase }}
+              </p>
+
+              @if (returnedClaim) {
+
+                <div class="returned-claim-info">
+
+                  <h4>Claimant Information</h4>
+
+                  <p>
+                    <strong>Claimant:</strong>
+                    {{ returnedClaim.claimantName }}
+                  </p>
+
+                  <p>
+                    <strong>Claim Reference:</strong>
+                    {{ returnedClaim.claimReference }}
+                  </p>
+
+                  <p>
+                    <strong>Contact Number:</strong>
+                    {{ returnedClaim.contactNumber }}
+                  </p>
+
+                  <p>
+                    <strong>Email:</strong>
+                    {{ returnedClaim.email || 'Not provided' }}
+                  </p>
+
+                  <p>
+                    <strong>Claim Details:</strong>
+                    {{ returnedClaim.claimDetails }}
+                  </p>
+
+                  <p>
+                    <strong>Claim Status:</strong>
+                    {{ returnedClaim.status | titlecase }}
+                  </p>
+
+                  @if (returnedClaim.status === 'approved') {
+
+                    <button
+                      type="button"
+                      class="return-button"
+                      (click)="updateClaimReturn(returnedClaim._id)">
+                      Mark as Returned
+                    </button>
+
+                  } @else if (returnedClaim.status === 'returned') {
+
+                    <div class="return-date-record">
+                      <h4>Return Record</h4>
+
+                      <p>
+                        <strong>Returned On:</strong>
+                        {{ returnedClaim.returnedAt | date:'medium' }}
+                      </p>
+
+                      <p>
+                        This item has been successfully handed back to its owner.
+                      </p>
+                    </div>
+
+                  }
+
+                </div>
+
+              } @else {
+
+                <p class="empty-message">
+                  No associated approved claim was found.
+                </p>
+
+              }
+
+            </div>
+
+          }
+
+        </div>
+
+      } @else {
+
+        <p class="empty-message">
+          No approved or returned items available.
+        </p>
+
+      }
+
+    </section>
+
+  }
+
+</div>

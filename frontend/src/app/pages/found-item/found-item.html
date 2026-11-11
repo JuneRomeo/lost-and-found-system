@@ -1,0 +1,145 @@
+<div class="found-item-container">
+
+  <h2>Report a Found Item</h2>
+  <p class="page-description">
+    Provide the details of the item you found.
+  </p>
+
+  <!-- SUCCESS MESSAGE -->
+  @if (turnoverCode) {
+    <div class="turnover-code-result">
+
+      <p class="success-label">REPORT SUBMITTED SUCCESSFULLY</p>
+
+      <h2>Your Turnover Code</h2>
+
+      <div class="turnover-code">
+        {{ turnoverCode }}
+      </div>
+
+      <button
+        type="button"
+        class="copy-code-button"
+        (click)="copyTurnoverCode()"
+      >
+        Copy Turnover Code
+      </button>
+
+      @if (copyMessage) {
+        <p class="copy-message">{{ copyMessage }}</p>
+      }
+
+      <p class="success-message">
+        {{ successMessage }}
+      </p>
+
+      <div class="turnover-reminder">
+        <h3>What should you do next?</h3>
+
+        <ol>
+          <li>Bring the found item to the school's Disciplinary Office.</li>
+          <li>Hand over the item to authorized personnel.</li>
+          <li>Present your Turnover Code so staff can identify your report.</li>
+          <li>Keep your Turnover Code for future reference.</li>
+        </ol>
+
+        <p>
+          <strong>Important:</strong>
+          Your report is not complete until you have turned over the
+          physical item to the Disciplinary Office.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="dismiss-button"
+        (click)="dismissSuccess()"
+      >
+        Dismiss Message
+      </button>
+
+    </div>
+  }
+
+  <!-- FOUND ITEM FORM -->
+  <form (ngSubmit)="onSubmit()" novalidate>
+
+    <div class="form-group">
+      <label for="itemName">Item Name</label>
+      <input
+        type="text"
+        id="itemName"
+        name="itemName"
+        [(ngModel)]="itemName"
+        placeholder="Example: Black Wallet"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        name="description"
+        [(ngModel)]="description"
+        placeholder="Describe the item..."
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Category</label>
+      <select
+        id="category"
+        name="category"
+        [(ngModel)]="category"
+        required
+      >
+        <option value="">Select a category</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Clothing">Clothing</option>
+        <option value="Bags">Bags</option>
+        <option value="Accessories">Accessories</option>
+        <option value="Documents">Documents</option>
+        <option value="Others">Others</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="location">Found Location</label>
+      <input
+        type="text"
+        id="location"
+        name="location"
+        [(ngModel)]="location"
+        placeholder="Where did you find the item?"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="dateLostFound">Date Found</label>
+      <input
+        type="date"
+        id="dateLostFound"
+        name="dateLostFound"
+        [(ngModel)]="dateLostFound"
+        min="2026-10-01"
+        max="2031-12-31"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <app-image-upload
+        (fileSelected)="onImageSelected($event)"
+      ></app-image-upload>
+    </div>
+
+    <button type="submit" class="submit-button">
+      Submit Found Item Report
+    </button>
+
+  </form>
+
+</div>

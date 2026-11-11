@@ -1,0 +1,151 @@
+<div class="tracker-container">
+
+  <div class="tracker-header">
+    <h1>Track Your Claim</h1>
+    <p>
+      Enter your claim reference number to check the latest status
+      of your submitted claim.
+    </p>
+  </div>
+
+  <!-- SEARCH FORM -->
+  <form (ngSubmit)="trackClaim()">
+
+    <label for="claimReference">Claim Reference Number</label>
+
+    <input
+      id="claimReference"
+      type="text"
+      name="claimReference"
+      [(ngModel)]="claimReference"
+      placeholder="Example: CLM-3ED3D833D2E51F8F"
+      required
+    >
+
+    <button type="submit">Track Claim</button>
+
+  </form>
+
+  <!-- ERROR MESSAGE -->
+  @if (errorMessage()) {
+    <div class="error-message">
+      {{ errorMessage() }}
+    </div>
+  }
+
+  <!-- CLAIM RESULT -->
+  @if (claimResult(); as claim) {
+    <div class="claim-result">
+
+      <div class="result-header">
+        <h2>Claim Details</h2>
+        <span class="status-badge" [class]="claim.status">
+          {{ claim.status | titlecase }}
+        </span>
+      </div>
+
+      <div class="claim-information">
+
+        <div class="information-row">
+          <span>Reference Number</span>
+          <strong>{{ claim.claimReference }}</strong>
+        </div>
+
+        <div class="information-row">
+          <span>Item Name</span>
+          <strong>{{ claim.item?.itemName || 'Not available' }}</strong>
+        </div>
+
+        <div class="information-row">
+          <span>Category</span>
+          <strong>{{ claim.item?.category || 'Not available' }}</strong>
+        </div>
+
+        <div class="information-row">
+          <span>Location</span>
+          <strong>{{ claim.item?.location || 'Not available' }}</strong>
+        </div>
+
+        <div class="information-row">
+          <span>Claim Status</span>
+          <strong>{{ claim.status | titlecase }}</strong>
+        </div>
+
+      </div>
+
+      <!-- PENDING -->
+      @if (claim.status === 'pending') {
+        <div class="status-message pending-message">
+          <h3>Claim Under Review</h3>
+          <p>
+            Your claim has been submitted successfully and is currently
+            waiting for administrator review. Please wait for an update.
+          </p>
+        </div>
+      }
+
+      <!-- APPROVED -->
+      @if (claim.status === 'approved') {
+        <div class="status-message approved-message">
+          <h3>Your Claim Has Been Approved!</h3>
+          <p>
+            Your ownership claim has been approved. Please visit the
+            school's <strong>Disciplinary Office</strong> to claim your item.
+          </p>
+          <ol>
+            <li>Bring your Claim Reference Number.</li>
+            <li>Present valid identification or supporting evidence if requested.</li>
+            <li>Coordinate with the authorized office personnel to retrieve your item.</li>
+          </ol>
+          <p>
+            <strong>Important:</strong>
+            Your item has not yet been recorded as returned.
+            Please complete the claiming process at the office.
+          </p>
+        </div>
+      }
+
+      <!-- REJECTED -->
+      @if (claim.status === 'rejected') {
+        <div class="status-message rejected-message">
+          <h3>Claim Rejected</h3>
+          <p>
+            Unfortunately, your claim was not approved.
+          </p>
+
+          @if (claim.rejectionReason) {
+            <div class="rejection-reason">
+              <strong>Reason for Rejection</strong>
+              <p>{{ claim.rejectionReason }}</p>
+            </div>
+          } @else {
+            <p>
+              No rejection reason was provided.
+              Please contact the school's Disciplinary Office for clarification.
+            </p>
+          }
+        </div>
+      }
+
+      <!-- RETURNED -->
+      @if (claim.status === 'returned') {
+        <div class="status-message returned-message">
+          <h3>Item Successfully Returned</h3>
+          <p>
+            Your claim has been completed and the item has been recorded
+            as returned.
+          </p>
+
+          @if (claim.returnedAt) {
+            <p>
+              <strong>Date Returned:</strong>
+              {{ claim.returnedAt }}
+            </p>
+          }
+        </div>
+      }
+
+    </div>
+  }
+
+</div>

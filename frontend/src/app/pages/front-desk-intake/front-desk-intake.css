@@ -1,0 +1,94 @@
+
+.front-desk-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.front-desk-container h1 {
+  color: #1f2937;
+  margin-bottom: 10px;
+}
+
+.front-desk-container > p {
+  color: #6b7280;
+  margin-bottom: 25px;
+}
+
+.intake-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.intake-card h2 {
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #1f2937;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #374151;
+}
+
+.form-group input,
+.form-group select {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.intake-card button {
+  width: 100%;
+  padding: 13px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.intake-card button:hover {
+  background: #1d4ed8;
+}
+
+.success-message {
+  background: #dcfce7;
+  color: #166534;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.error-message {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .front-desk-container {
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .intake-card {
+    padding: 20px;
+  }
+}
